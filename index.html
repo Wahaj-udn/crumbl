@@ -648,66 +648,66 @@
             <div class="product-grid">
                 <!-- Product 1 -->
                 <div class="product-card">
-                    <img src=images\classic1.jpg alt="Chocolate Chip Cookie" class="product-img">
+                    <img src=images\classic1.jpg alt="Chocolate Chip Cookie" class="product-img"  data-hover="images/classic2.jpg">
                     <div class="product-info">
                         <h3 class="product-title">Classic Chocolate Chip</h3>
                         <p class="product-desc">Our signature cookie with Belgian chocolate chunks and a hint of sea salt.</p>
-                        <span class="product-price">$2.99</span>
+                        <span class="product-price">₹210</span>
                         <button class="add-to-cart">Add to Cart</button>
                     </div>
                 </div>
                 
                 <!-- Product 2 -->
                 <div class="product-card">
-                    <img src=images\dc1.jpg alt="Double Chocolate Cookie" class="product-img">
+                    <img src=images\dc1.jpg alt="Double Chocolate Cookie" class="product-img"  data-hover="images/dc2.jpg">
                     <div class="product-info">
                         <h3 class="product-title">Double Chocolate</h3>
                         <p class="product-desc">Rich chocolate cookie with white and dark chocolate chunks for chocolate lovers.</p>
-                        <span class="product-price">$3.49</span>
+                        <span class="product-price">₹270</span>
                         <button class="add-to-cart">Add to Cart</button>
                     </div>
                 </div>
                 
                 <!-- Product 3 -->
                 <div class="product-card">
-                    <img src=images\pp1.jpg alt="Oatmeal Raisin Cookie" class="product-img">
+                    <img src=images\pp1.jpg alt="Oatmeal Raisin Cookie" class="product-img"  data-hover="images/pp2.jpg">
                     <div class="product-info">
                         <h3 class="product-title">Oatmeal Raisin</h3>
                         <p class="product-desc">Hearty oatmeal cookie with plump raisins and a touch of cinnamon.</p>
-                        <span class="product-price">$2.79</span>
+                        <span class="product-price">₹180</span>
                         <button class="add-to-cart">Add to Cart</button>
                     </div>
                 </div>
                 
                 <!-- Product 4 -->
                 <div class="product-card">
-                    <img src=images\red-velvet1.jpg alt="Red Velvet Cookie" class="product-img">
+                    <img src=images\red-velvet1.jpg alt="Red Velvet Cookie" class="product-img"  data-hover="images\red-velvet2.jpg">
                     <div class="product-info">
                         <h3 class="product-title">Red Velvet</h3>
                         <p class="product-desc">Vibrant red cookie with cream cheese chips and a velvety texture.</p>
-                        <span class="product-price">$3.99</span>
+                        <span class="product-price">₹300</span>
                         <button class="add-to-cart">Add to Cart</button>
                     </div>
                 </div>
                 
                 <!-- Product 5 -->
                 <div class="product-card">
-                    <img src=images\pb.jpg alt="Peanut Butter Cookie" class="product-img">
+                    <img src=images\pb.jpg alt="Peanut Butter Cookie" class="product-img"  data-hover="images/pb2.jpg">
                     <div class="product-info">
                         <h3 class="product-title">Peanut Butter</h3>
                         <p class="product-desc">Creamy peanut butter cookie topped with crunchy peanut pieces.</p>
-                        <span class="product-price">$3.29</span>
+                        <span class="product-price">₹250</span>
                         <button class="add-to-cart">Add to Cart</button>
                     </div>
                 </div>
                 
                 <!-- Product 6 -->
                 <div class="product-card">
-                    <img src=images\om1.jpg alt="White Chocolate Macadamia Cookie" class="product-img">
+                    <img src=images\om1.jpg alt="White Chocolate Macadamia Cookie" class="product-img"  data-hover="images/om2.jpg">
                     <div class="product-info">
                         <h3 class="product-title">White Chocolate Macadamia</h3>
                         <p class="product-desc">Buttery cookie loaded with premium white chocolate and macadamia nuts.</p>
-                        <span class="product-price">$4.29</span>
+                        <span class="product-price">₹320</span>
                         <button class="add-to-cart">Add to Cart</button>
                     </div>
                 </div>
@@ -724,7 +724,7 @@
                     <img src=images\woman-baking.jpg alt="Baker making cookies">
                 </div>
                 <div class="about-content">
-                    <h2>Baked with Love Since 2010</h2>
+                    <h2>Baked with Love Since 2025</h2>
                     <p>Crumble & Co. started in a small kitchen with a big dream. Our founder, Harisa, had a passion for creating the perfect cookie - one that was crispy on the outside yet soft and chewy on the inside.</p>
                     <p>What began as baking for friends and family quickly turned into a local sensation, and before long, we opened our first store. Today, we ship our handcrafted cookies nationwide while maintaining the same quality and love in every batch.</p>
                     <p>We use only the finest ingredients - premium Belgian chocolate, farm-fresh eggs, real butter, and our secret family recipes that have been perfected over generations.</p>
@@ -1154,36 +1154,26 @@ productCards.forEach(card => {
     const productImg = card.querySelector('.product-img');
     const originalSrc = productImg.src;
     
-    // Define alternative images for each product (you can change these URLs)
-    const alternativeSrc = originalSrc.includes('1499636136210') ? 'images\classic1.jpg' : // Chocolate Chip
-                         originalSrc.includes('1558961363') ? 'images\dc2.jpg' : // Double Chocolate  
-                         originalSrc.includes('1590080875515') ? 'images\pp2.jpg' : // Oatmeal Raisin
-                         originalSrc.includes('1614145121029') ? 'images\red-velvet2.jpg' : // Red Velvet
-                         originalSrc.includes('1621236354502') ? 'images\pb2.jpg' : // Peanut Butter
-                         'images\om2.jpg'; // White Chocolate Macadamia
-    
-    // Add hover event to change image
+    // Get the hover image from a custom data attribute
+    const hoverSrc = productImg.getAttribute('data-hover');
+
     card.addEventListener('mouseenter', () => {
         productImg.style.opacity = '0';
-        
-        // Change the image after fade out
         setTimeout(() => {
-            productImg.src = alternativeSrc;
+            productImg.src = hoverSrc;
             productImg.style.opacity = '1';
         }, 200);
     });
-    
-    // Add leave event to revert image
+
     card.addEventListener('mouseleave', () => {
         productImg.style.opacity = '0';
-        
-        // Change back to original after fade out
         setTimeout(() => {
             productImg.src = originalSrc;
             productImg.style.opacity = '1';
         }, 200);
     });
 });
+
 </script>
 </body>
 </html>
